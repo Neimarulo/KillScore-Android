@@ -10,19 +10,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
+import android.widget.ListView;
 
-public class MainActivity extends ActionBarActivity {
+import com.dinobox.killscore.Adapters.Ligas.LigasAdapter;
+import com.dinobox.killscore.Entities.LigasEntity;
+import com.dinobox.killscore.Listeners.ILigasListeners;
+import com.dinobox.killscore.Models.LigasModel;
+
+import java.util.List;
+
+public class MainActivity extends ActionBarActivity implements ILigasListeners{
+
+    private ListView _list_liga;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+
+        LigasModel.asyncJson("http://killscore.innovadevelopments.com.co/api/BaseServices/Ligas",this,this);
+
+        ListView listLigas = (ListView)findViewById(R.id.ligas_listview);
+
+        _list_liga = listLigas;
+        
     }
 
 
@@ -46,6 +58,14 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void returnListLigas(List<LigasEntity> i_ligas) {
+
+        LigasAdapter list_adapter = new LigasAdapter(i_ligas,this);
+        _list_liga.setAdapter(list_adapter);
+
+    }
+
     /**
      * A placeholder fragment containing a simple view.
      */
@@ -54,12 +74,8 @@ public class MainActivity extends ActionBarActivity {
         public PlaceholderFragment() {
         }
 
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_main, container, false);
-            return rootView;
-        }
+
+
     }
 
 }

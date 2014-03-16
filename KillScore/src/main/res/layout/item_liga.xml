@@ -1,0 +1,57 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:orientation="horizontal"
+    android:background="#fff"
+    android:layout_marginTop="3dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    tools:context="com.dinobox.killscore.MainActivity$PlaceholderFragment">
+
+
+    <ImageView
+        android:id="@+id/img_liga"
+        android:src="@drawable/img_default"
+        android:layout_width="118dp"
+        android:layout_height="118dp"
+        android:layout_marginRight="15dp"/>
+
+    <LinearLayout
+        android:layout_width="210dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/name_liga"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textSize="24dp"
+            android:layout_marginTop="15dp"
+            android:paddingBottom="20px"
+            android:text="Liga Postobon"/>
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dp"
+            android:background="#888"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/num_teams"
+            android:layout_width="220dp"
+            android:layout_height="wrap_content"
+            android:textSize="16dp"
+            android:textColor="#888"
+            android:text="Equipos 18"/>
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
